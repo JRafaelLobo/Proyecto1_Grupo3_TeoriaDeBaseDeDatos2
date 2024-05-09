@@ -23,8 +23,8 @@ public class Main extends javax.swing.JFrame {
         try {
             initComponents();
             this.setLocationRelativeTo(null);
-//            DB_Manager db = new DB_Manager();
-//            db.crearConexion();
+            JedisConector j = new JedisConector();
+            //j.set("a", "18");
             CambiarPantallaTiempo CPT = new CambiarPantallaTiempo(Portadita, JF_login, 4000, false);
             CPT.start();
 
