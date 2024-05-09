@@ -3174,11 +3174,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
-//        Jf_VentanaAdmin.setVisible(true);
-//        Jf_VentanaAdmin.pack();
-//        Jf_VentanaAdmin.setLocationRelativeTo(JF_login);
-//        Jf_VentanaAdmin.setExtendedState(MAXIMIZED_BOTH);
-//        JF_login.setVisible(false);
+        Jf_VentanaAdmin.setVisible(true);
+        Jf_VentanaAdmin.pack();
+        Jf_VentanaAdmin.setLocationRelativeTo(JF_login);
+        Jf_VentanaAdmin.setExtendedState(MAXIMIZED_BOTH);
+        JF_login.setVisible(false);
 //Empresa
         jf_VistaEmpresa.setVisible(true);
         jf_VistaEmpresa.pack();
