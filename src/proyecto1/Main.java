@@ -23,8 +23,7 @@ public class Main extends javax.swing.JFrame {
         try {
             initComponents();
             this.setLocationRelativeTo(null);
-            JedisConector j = new JedisConector();
-            //j.set("a", "18");
+            j = new JedisConector();
             CambiarPantallaTiempo CPT = new CambiarPantallaTiempo(Portadita, JF_login, 4000, false);
             CPT.start();
 
@@ -922,7 +921,6 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(70, 70, 70)
                                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_AdminEmpresaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel12)
                                 .addGap(45, 45, 45)))))
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -1302,7 +1300,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(tf_nacionalidadcrearEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
                             .addComponent(cb_EstadoCivilcrearEmpleado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1664,7 +1662,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jTextField23, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
                             .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2564,7 +2562,7 @@ public class Main extends javax.swing.JFrame {
         jPanel43Layout.setVerticalGroup(
             jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel43Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel84)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3395,6 +3393,7 @@ public class Main extends javax.swing.JFrame {
     private void jPanel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel21MouseClicked
         numEmergencia_Empleado = tf_numEmergenciaCrearEmpleado.getText();
         cEmergencia_Empleado = tf_corEmergenciaCrearEmpleado.getText();
+        idioma_Empleado = tf_idiomasCrearEmpleado.getText();
         AnioGraduacion_Empleado = tf_aGraduacionCrearEmpleado.getText();
         Titulo_Empleado = tf_tituloCrearEmpleado.getText();
         EstudiosAfines_Empleado = tf_estudiosAfinesCrearEmpleado.getText();
@@ -3408,11 +3407,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel21MouseClicked
 
     private void jPanel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel24MouseClicked
-        AniosEsperencia_Empleado = tf_aExperienciaCrearEmpleado.getText();
+        AniosExperencia_Empleado = tf_aExperienciaCrearEmpleado.getText();
         numReferencia_Empleado = tf_numReferenciasCrearEmpleado.getText();
         cReferencia_Empleado = tf_cReferenciaCrearEmpleado.getText();
         tipoEmpleo_Empleado = tf_tipoEmpleoCrearEmpleado.getText();
-
+        nombreReferencia_Empleado = tf_nomReferenciaCrearEmpleado.getText();
+        SalarioEsperado_Empleado = tf_salarioCrearEmpleado.getText();
+        j.CrearPersona(nom_Empleado, numId_Empleado, cElectronico_Empleado, Residencia_Empleado, FechaNacimiento_Empleado, numTel_Empleado, Nacionalidad_Empleado, estadoCivil_Empleado, numEmergencia_Empleado, cEmergencia_Empleado, idioma_Empleado, AnioGraduacion_Empleado, Titulo_Empleado, EstudiosAfines_Empleado, Certificaciones_Empleado, nivelEstudio_Empleado, AniosExperencia_Empleado, numReferencia_Empleado, cReferencia_Empleado, tipoEmpleo_Empleado, SalarioEsperado_Empleado, nombreReferencia_Empleado);
+        JOptionPane.showConfirmDialog(Jf_formularioEmpleado3, "Se ha creado Persona");
 //cerrar
         tf_aExperienciaCrearEmpleado.setText("");
         tf_aGraduacionCrearEmpleado.setText("");
@@ -3501,6 +3503,12 @@ public class Main extends javax.swing.JFrame {
         String sectorcrearEmpresa = tf_sectorcrearEmpresa.getText();
         String fechafundacioncrearEmpresa = tf_fechafundacioncrearEmpresa.getText();
         String nacionOrignencrearEmpresa = tf_nacioncrearEmpresa.getText();
+        try {
+            j.CrearEmpresa(nombrecrearEmpresa, cifcrearEmpresa, directorcrearEmpresa, direccioncrearEmpresa, rubrocrearEmpresa, sectorcrearEmpresa, fechafundacioncrearEmpresa, nacionOrignencrearEmpresa);
+            JOptionPane.showConfirmDialog(Jf_formularioEmpresa, "Se ha creado la Empresa");
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(Jf_formularioEmpresa, "Ha Fallado la creacion de la empresa");
+        }
         Jf_formularioEmpresa.setVisible(false);
     }//GEN-LAST:event_jb_crearEmpresaMouseClicked
 
@@ -3838,8 +3846,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel50;
     private javax.swing.JPanel jPanel51;
     private javax.swing.JPanel jPanel52;
-    private javax.swing.JPanel jPanel53;
-    private javax.swing.JPanel jPanel54;
     private javax.swing.JPanel jPanel55;
     private javax.swing.JPanel jPanel56;
     private javax.swing.JPanel jPanel57;
@@ -3869,8 +3875,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JFrame jf_VistaPersona;
     private javax.swing.JLabel jl_crearSolicitud;
     private javax.swing.JLabel jl_modificarSolicitud;
-    private javax.swing.JLabel jl_modificarSolicitud1;
-    private javax.swing.JLabel jl_modificarSolicitud2;
     private javax.swing.JLabel jl_modificarSolicitud3;
     private javax.swing.JLabel jl_solicitudPersonaEmpleo;
     private javax.swing.JLabel jl_solicitudPersonaPosicion;
@@ -3925,7 +3929,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField tf_tituloCrearEmpleado;
     private javax.swing.JTextField tf_tituloCrearEmpleado1;
     // End of variables declaration//GEN-END:variables
-String nom_Empleado;
+JedisConector j;
+    String idioma_Empleado;
+    String nom_Empleado;
     String numId_Empleado;
     String cElectronico_Empleado;
     String cEmergencia_Empleado;
@@ -3943,9 +3949,10 @@ String nom_Empleado;
     String EstudiosAfines_Empleado;
     String Certificaciones_Empleado;
     String nivelEstudio_Empleado;
-    String AniosEsperencia_Empleado;
+    String AniosExperencia_Empleado;
     String tipoEmpleo_Empleado;
     String SalarioEsperado_Empleado;
+    String nombreReferencia_Empleado;
 //--------------------------
     //Esta Clase se utiliza para Poner Imagenes dentro de paneles
 
