@@ -505,7 +505,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(133, 57, 50));
-        jLabel15.setText("Ingresar Nombre o Id:");
+        jLabel15.setText("Ingresar Id:");
 
         jt_BuscarEmpresa1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -749,7 +749,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(133, 57, 50));
-        jLabel10.setText("Ingresar Nombre o Id:");
+        jLabel10.setText("Ingresar id:");
 
         jt_BuscarEmpresa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
