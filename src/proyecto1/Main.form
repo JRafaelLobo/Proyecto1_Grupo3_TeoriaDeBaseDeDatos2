@@ -1384,7 +1384,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable1">
+                    <Component class="javax.swing.JTable" name="Table_MostrarDetalle">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="f1" green="f3" red="e8" type="rgb"/>
@@ -2216,8 +2216,8 @@
                                       <Component id="tf_tipoEmpleoCrearEmpleado" alignment="0" pref="334" max="32767" attributes="0"/>
                                       <Component id="tf_salarioCrearEmpleado" alignment="0" pref="334" max="32767" attributes="0"/>
                                       <Component id="tf_nomReferenciaCrearEmpleado" alignment="0" pref="334" max="32767" attributes="0"/>
-                                      <Component id="jTextField23" alignment="0" pref="334" max="32767" attributes="0"/>
-                                      <Component id="jComboBox3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tf_nombreUsuario" alignment="0" pref="334" max="32767" attributes="0"/>
+                                      <Component id="tf_claveUsuario" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="jPanel24" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -2264,14 +2264,14 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel53" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField23" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_nombreUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jLabel54" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_claveUsuario" min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="50" max="32767" attributes="0"/>
+                          <EmptySpace pref="47" max="32767" attributes="0"/>
                           <Component id="jPanel24" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
@@ -2378,7 +2378,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Nacionalidad:"/>
+                    <Property name="text" type="java.lang.String" value="Usuario"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel54">
@@ -2392,7 +2392,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Estado Civil:"/>
+                    <Property name="text" type="java.lang.String" value="Clave"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel55">
@@ -2444,30 +2444,14 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField23">
+                <Component class="javax.swing.JTextField" name="tf_nombreUsuario">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox3">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Soltero"/>
-                        <StringItem index="1" value="Casado"/>
-                        <StringItem index="2" value="Divorciado"/>
-                        <StringItem index="3" value="Comprometido"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
+                <Component class="javax.swing.JPasswordField" name="tf_claveUsuario">
                 </Component>
                 <Container class="javax.swing.JPanel" name="jPanel24">
                   <Properties>
@@ -2697,7 +2681,6 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JB_modificarAgenteMouseClicked"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_modificarAgenteActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="CB_modificarAgente">
@@ -2713,11 +2696,15 @@
                 <Component class="javax.swing.JComboBox" name="cb_atributoAgente">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="8">
                         <StringItem index="0" value="nombre"/>
-                        <StringItem index="1" value="direccion"/>
-                        <StringItem index="2" value="celular"/>
-                        <StringItem index="3" value="telefonoOficina"/>
+                        <StringItem index="1" value="CIF"/>
+                        <StringItem index="2" value="director"/>
+                        <StringItem index="3" value="direccion"/>
+                        <StringItem index="4" value="rubro"/>
+                        <StringItem index="5" value="sector"/>
+                        <StringItem index="6" value="fechaFundacion"/>
+                        <StringItem index="7" value="nacionOrigen"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -2950,7 +2937,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel29" alignment="0" pref="611" max="32767" attributes="0"/>
+              <Component id="jPanel29" alignment="0" pref="682" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -2972,7 +2959,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="30" width="520" height="530"/>
+                  <AbsoluteConstraints x="20" y="30" width="540" height="600"/>
                 </Constraint>
               </Constraints>
 
@@ -2982,9 +2969,13 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel65" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel65" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="340" max="32767" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel112" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel66" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel67" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel68" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -2993,6 +2984,7 @@
                                       <Component id="jLabel71" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel72" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel73" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel111" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -3004,11 +2996,17 @@
                                       <Component id="tf_sectorcrearEmpresa" alignment="0" pref="334" max="32767" attributes="0"/>
                                       <Component id="tf_fechafundacioncrearEmpresa" alignment="0" pref="334" max="32767" attributes="0"/>
                                       <Component id="tf_nacioncrearEmpresa" alignment="0" pref="334" max="32767" attributes="0"/>
+                                      <Component id="tf_UsuarioEmpresa" alignment="0" pref="334" max="32767" attributes="0"/>
+                                      <Component id="tf_ClaveEmpresa" max="32767" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jb_crearEmpresa" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="38" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jb_crearEmpresa" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3062,9 +3060,22 @@
                                   <Component id="tf_nacioncrearEmpresa" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="52" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel111" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_UsuarioEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="tf_ClaveEmpresa" pref="51" max="32767" attributes="0"/>
+                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jLabel112" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jb_crearEmpresa" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3242,6 +3253,41 @@
                     </Property>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JTextField" name="tf_nacioncrearEmpresa">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel111">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f0" green="f5" red="fa" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Usuario"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel112">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f0" green="f5" red="fa" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Clave"/>
+                  </Properties>
+                </Component>
                 <Container class="javax.swing.JPanel" name="jb_crearEmpresa">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -3259,18 +3305,18 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="jLabel74" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="24" max="32767" attributes="0"/>
+                              <EmptySpace pref="26" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel74" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jLabel74" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3289,12 +3335,14 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JTextField" name="tf_nacioncrearEmpresa">
+                <Component class="javax.swing.JTextField" name="tf_UsuarioEmpresa">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JPasswordField" name="tf_ClaveEmpresa">
                 </Component>
               </SubComponents>
             </Container>
@@ -3815,7 +3863,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="517" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="529" max="32767" attributes="0"/>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
@@ -3827,7 +3875,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="341" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="361" max="32767" attributes="0"/>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
@@ -3850,33 +3898,36 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
-                                  <Component id="jPanel39" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="223" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel87" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jl_solicitudPersonaRequerimientos" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="jPanel39" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel85" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jl_solicitudPersonaSalario" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel83" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jl_solicitudPersonaPosicion" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel81" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                              <Component id="jl_solicitudPersonaEmpleo" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel87" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jl_solicitudPersonaRequerimientos" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jLabel85" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="jl_solicitudPersonaSalario" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jLabel83" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="jl_solicitudPersonaPosicion" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jLabel81" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                                      <Component id="jl_solicitudPersonaEmpleo" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -4504,18 +4555,18 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="tf_numEmergenciaCrearEmpleado1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="tf_idiomasCrearEmpleado1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="tf_corEmergenciaCrearEmpleado1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="tf_aGraduacionCrearEmpleado1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="tf_tituloCrearEmpleado1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="tf_certificacionesCrearEmpleado2" max="32767" attributes="0"/>
-                                              <Component id="tf_certificacionesCrearSolicitud" alignment="0" min="-2" pref="286" max="-2" attributes="0"/>
+                                              <Component id="tf_Puesto" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="tf_TipoEmpleadoTrabajo" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="tf_SalarioTrabajo" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="tf_FuncionTrabajo" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="tf_TituloRequisitoTrabajo" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="tf_NivelDeEstudioMinimo" max="32767" attributes="0"/>
+                                              <Component id="tf_ExperienciaTrabajo" alignment="0" min="-2" pref="286" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel100" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="tf_cupoCrearSolicitud" max="32767" attributes="0"/>
+                                      <Component id="tf_Cupos" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -4535,46 +4586,46 @@
                           <Component id="jLabel94" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tf_numEmergenciaCrearEmpleado1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_Puesto" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel96" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel95" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tf_corEmergenciaCrearEmpleado1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_SalarioTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel97" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tf_idiomasCrearEmpleado1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_TipoEmpleadoTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel99" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tf_aGraduacionCrearEmpleado1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_FuncionTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel98" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tf_tituloCrearEmpleado1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_TituloRequisitoTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel101" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel102" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tf_certificacionesCrearEmpleado2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_NivelDeEstudioMinimo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel100" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tf_certificacionesCrearSolicitud" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_ExperienciaTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel104" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel110" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tf_cupoCrearSolicitud" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_Cupos" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="16" max="32767" attributes="0"/>
                           <Component id="jp_crearSolicitud" min="-2" max="-2" attributes="0"/>
@@ -4609,7 +4660,7 @@
                     <Property name="text" type="java.lang.String" value="Salario:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tf_numEmergenciaCrearEmpleado1">
+                <Component class="javax.swing.JTextField" name="tf_Puesto">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
@@ -4714,42 +4765,42 @@
                     <Property name="text" type="java.lang.String" value="Minimo:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tf_idiomasCrearEmpleado1">
+                <Component class="javax.swing.JTextField" name="tf_TipoEmpleadoTrabajo">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tf_corEmergenciaCrearEmpleado1">
+                <Component class="javax.swing.JTextField" name="tf_SalarioTrabajo">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tf_aGraduacionCrearEmpleado1">
+                <Component class="javax.swing.JTextField" name="tf_FuncionTrabajo">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tf_tituloCrearEmpleado1">
+                <Component class="javax.swing.JTextField" name="tf_TituloRequisitoTrabajo">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tf_certificacionesCrearSolicitud">
+                <Component class="javax.swing.JTextField" name="tf_ExperienciaTrabajo">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_certificacionesCrearSolicitudActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_ExperienciaTrabajoActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JPanel" name="jp_crearSolicitud">
@@ -4799,7 +4850,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JTextField" name="tf_certificacionesCrearEmpleado2">
+                <Component class="javax.swing.JTextField" name="tf_NivelDeEstudioMinimo">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
@@ -4834,7 +4885,7 @@
                     <Property name="text" type="java.lang.String" value="Cupos:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tf_cupoCrearSolicitud">
+                <Component class="javax.swing.JTextField" name="tf_Cupos">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
