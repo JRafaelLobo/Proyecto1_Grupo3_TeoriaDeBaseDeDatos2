@@ -247,7 +247,7 @@ public class Main extends javax.swing.JFrame {
         jPanel36 = new javax.swing.JPanel();
         jLabel79 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jlist_SolicitudesPersona = new javax.swing.JList<>();
         jPanel37 = new javax.swing.JPanel();
         jLabel80 = new javax.swing.JLabel();
         jPanel45 = new javax.swing.JPanel();
@@ -568,6 +568,11 @@ public class Main extends javax.swing.JFrame {
         jb_buscarPersona.setBackground(new java.awt.Color(104, 141, 138));
         jb_buscarPersona.setForeground(new java.awt.Color(255, 255, 255));
         jb_buscarPersona.setText("Buscar");
+        jb_buscarPersona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_buscarPersonaMouseClicked(evt);
+            }
+        });
 
         JB_crearEmpresa6.setBackground(new java.awt.Color(216, 226, 220));
         JB_crearEmpresa6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -831,6 +836,11 @@ public class Main extends javax.swing.JFrame {
         jb_buscarEmpresa.setBackground(new java.awt.Color(104, 141, 138));
         jb_buscarEmpresa.setForeground(new java.awt.Color(255, 255, 255));
         jb_buscarEmpresa.setText("Buscar");
+        jb_buscarEmpresa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_buscarEmpresaMouseClicked(evt);
+            }
+        });
 
         JB_crearEmpresa4.setBackground(new java.awt.Color(216, 226, 220));
         JB_crearEmpresa4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2346,7 +2356,7 @@ public class Main extends javax.swing.JFrame {
         jLabel79.setForeground(new java.awt.Color(104, 141, 138));
         jLabel79.setText("Solicitudes Disponibles:");
 
-        jScrollPane4.setViewportView(jList1);
+        jScrollPane4.setViewportView(jlist_SolicitudesPersona);
 
         jPanel37.setBackground(new java.awt.Color(104, 141, 138));
         jPanel37.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2397,6 +2407,11 @@ public class Main extends javax.swing.JFrame {
         jl_solicitudPersonaRequerimientos.setText("jLabel82");
 
         jPanel39.setBackground(new java.awt.Color(104, 141, 138));
+        jPanel39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel39MouseClicked(evt);
+            }
+        });
 
         jLabel82.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel82.setForeground(new java.awt.Color(253, 239, 236));
@@ -2429,7 +2444,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(176, 176, 176)
                         .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jp_DetallesSolicitudLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(24, 24, 24)
                         .addGroup(jp_DetallesSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jp_DetallesSolicitudLayout.createSequentialGroup()
                                 .addComponent(jLabel87)
@@ -3425,6 +3440,10 @@ public class Main extends javax.swing.JFrame {
             jf_VistaPersona.pack();
             jf_VistaPersona.setLocationRelativeTo(JF_login);
             JF_login.setVisible(false);
+
+            DefaultListModel<String> model = j.listarTrabajosJList();
+            jlist_SolicitudesPersona.setModel(model);
+
             return;
         }
 
@@ -3648,7 +3667,20 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_JB_crearEmpresa5MouseClicked
 
     private void jPanel37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel37MouseClicked
+        String id = jlist_SolicitudesPersona.getSelectedValue();
+        id = j.extraerId(id);
+        String idempresa = j.obtenerAtributoDeTrabajo(id, "idEmpresa");
+        String nombreempresa = j.obtenerAtributodeidEmpresa(idempresa, "nombre");
+        String salario = j.obtenerAtributoDeTrabajo(id, "salario");
+        String tipoEmpleo = j.obtenerAtributoDeTrabajo(id, "tipoEmpleo");
+        String nivelMinimo = j.obtenerAtributoDeTrabajo(id, "nivelEstudioMinimo");
+
+        jl_solicitudPersonaEmpleo.setText(nombreempresa);
+        jl_solicitudPersonaPosicion.setText(tipoEmpleo);
+        jl_solicitudPersonaRequerimientos.setText(nivelMinimo);
+        jl_solicitudPersonaSalario.setText(salario);
         jp_DetallesSolicitud.setVisible(true);
+
     }//GEN-LAST:event_jPanel37MouseClicked
 
     private void jp_crearSolicitudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_crearSolicitudMouseClicked
@@ -3748,6 +3780,28 @@ public class Main extends javax.swing.JFrame {
         jtable_Aplicantes.setModel(m);
 
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jPanel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel39MouseClicked
+        // TODO add your handling code here:
+        String idtrabajo = jlist_SolicitudesPersona.getSelectedValue();
+        idtrabajo = j.extraerId(idtrabajo);
+        j.agregarSolicitante(idtrabajo, idActivo);
+        JOptionPane.showMessageDialog(jf_VistaPersona, "Se ha mandado la solicitud");
+    }//GEN-LAST:event_jPanel39MouseClicked
+
+    private void jb_buscarPersonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_buscarPersonaMouseClicked
+        // TODO add your handling code here:
+        String id = tf_buscarEmpresa1.getText();
+        DefaultTableModel m = j.BuscarPersona(id);
+        jt_BuscarEmpresa1.setModel(m);
+    }//GEN-LAST:event_jb_buscarPersonaMouseClicked
+
+    private void jb_buscarEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_buscarEmpresaMouseClicked
+        // TODO add your handling code here:
+        String id = tf_buscarEmpresa.getText();
+        DefaultTableModel m = j.BuscarEmpresa(id);
+        jt_BuscarEmpresa.setModel(m);
+    }//GEN-LAST:event_jb_buscarEmpresaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -3943,7 +3997,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -4025,6 +4078,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jl_verEntidad2;
     private javax.swing.JList<String> jlist_SolicitudAplicante;
     private javax.swing.JList<String> jlist_Solicitudes;
+    private javax.swing.JList<String> jlist_SolicitudesPersona;
     private javax.swing.JPanel jp_DetallesSolicitud;
     private javax.swing.JPanel jp_crearSolicitud;
     private javax.swing.JTable jt_BuscarEmpresa;

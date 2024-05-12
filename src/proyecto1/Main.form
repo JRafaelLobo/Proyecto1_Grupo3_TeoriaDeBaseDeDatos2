@@ -559,6 +559,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Buscar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_buscarPersonaMouseClicked"/>
+                      </Events>
                     </Component>
                     <Container class="javax.swing.JPanel" name="JB_crearEmpresa6">
                       <Properties>
@@ -992,6 +995,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Buscar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_buscarEmpresaMouseClicked"/>
+                      </Events>
                     </Component>
                     <Container class="javax.swing.JPanel" name="JB_crearEmpresa4">
                       <Properties>
@@ -3813,7 +3819,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JList" name="jList1">
+                    <Component class="javax.swing.JList" name="jlist_SolicitudesPersona">
                       <Properties>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                           <StringArray count="0"/>
@@ -3920,7 +3926,7 @@
                                           <Component id="jPanel39" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel87" min="-2" max="-2" attributes="0"/>
@@ -4028,6 +4034,9 @@
                               <Color blue="8a" green="8d" red="68" type="rgb"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel39MouseClicked"/>
+                          </Events>
 
                           <Layout>
                             <DimensionLayout dim="0">
