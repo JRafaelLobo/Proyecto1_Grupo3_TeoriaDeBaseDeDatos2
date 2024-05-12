@@ -162,11 +162,19 @@ public class JedisConector {
 
     //Eliminar
     public void eliminarTrabajo(String idTrabajo, String idEmpresa) {
-        // Eliminar el trabajo
-        jedis.del("trabajo:" + idTrabajo);
 
         // Eliminar la asociación del trabajo con la empresa
         jedis.srem("index:empresa:trabajo:" + idEmpresa, idTrabajo);
+
+        Set<String> idSolicitantes = jedis.smembers("index:trabajo:solicitantes:" + idTrabajo);
+
+        // Para cada solicitante, eliminar la solicitud asociada
+        for (String idPersona : idSolicitantes) {
+            jedis.srem("index:solicitud:trabajo:" + idPersona, idTrabajo);
+        }
+
+        // Finalmente, eliminar el trabajo
+        jedis.del("trabajo:" + idTrabajo);
         jedis.del("index:trabajo:solicitantes:" + idTrabajo);
     }
 
@@ -367,6 +375,8 @@ public class JedisConector {
 
     public void agregarSolicitante(String idTrabajo, String idPersona) {
         jedis.sadd("index:trabajo:solicitantes:" + idTrabajo, idPersona);
+        jedis.sadd("index:solicitud:trabajo:" + idPersona, idTrabajo);
+
     }
 
     public DefaultTableModel mostrarDetallesEmpresas() {
