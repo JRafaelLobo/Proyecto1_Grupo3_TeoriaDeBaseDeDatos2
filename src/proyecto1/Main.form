@@ -330,7 +330,7 @@
                                               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
                                               <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -1165,9 +1165,9 @@
                                   <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField1" max="32767" attributes="0"/>
+                                      <Component id="Username" max="32767" attributes="0"/>
                                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jPasswordField1" alignment="0" pref="305" max="32767" attributes="0"/>
+                                      <Component id="Password" alignment="0" pref="305" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -1187,11 +1187,11 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                          <Component id="Username" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPasswordField1" min="-2" max="-2" attributes="0"/>
+                          <Component id="Password" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel7" min="-2" pref="29" max="-2" attributes="0"/>
                           <EmptySpace pref="108" max="32767" attributes="0"/>
@@ -1222,9 +1222,9 @@
                     <Property name="text" type="java.lang.String" value="Username:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="Username">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UsernameActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel3">
@@ -1238,7 +1238,7 @@
                     <Property name="text" type="java.lang.String" value="Password:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+                <Component class="javax.swing.JPasswordField" name="Password">
                 </Component>
                 <Container class="javax.swing.JPanel" name="jPanel7">
                   <Properties>
@@ -2784,9 +2784,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tf_nuevovalorAgente1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="CB_modificarAgente1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cb_atributoAgente1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tf_nuevovalorPersona" alignment="0" max="32767" attributes="0"/>
+                              <Component id="CB_modificarEmpleado" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cb_atributoPersona" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
@@ -2810,17 +2810,17 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel61" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="CB_modificarAgente1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="CB_modificarEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cb_atributoAgente1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cb_atributoPersona" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel63" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tf_nuevovalorAgente1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_nuevovalorPersona" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="30" max="32767" attributes="0"/>
                           <Component id="JB_modificarAgente1" min="-2" pref="28" max="-2" attributes="0"/>
@@ -2877,7 +2877,7 @@
                     <Property name="text" type="java.lang.String" value="Atributo:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tf_nuevovalorAgente1">
+                <Component class="javax.swing.JTextField" name="tf_nuevovalorPersona">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -2893,10 +2893,9 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JB_modificarAgente1MouseClicked"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_modificarAgente1ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="CB_modificarAgente1">
+                <Component class="javax.swing.JComboBox" name="CB_modificarEmpleado">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
@@ -2906,14 +2905,32 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cb_atributoAgente1">
+                <Component class="javax.swing.JComboBox" name="cb_atributoPersona">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="22">
                         <StringItem index="0" value="nombre"/>
-                        <StringItem index="1" value="direccion"/>
-                        <StringItem index="2" value="celular"/>
-                        <StringItem index="3" value="telefonoOficina"/>
+                        <StringItem index="1" value="identidad"/>
+                        <StringItem index="2" value="correo"/>
+                        <StringItem index="3" value="residencia"/>
+                        <StringItem index="4" value="nacimiento"/>
+                        <StringItem index="5" value="telefono"/>
+                        <StringItem index="6" value="nacionalidad"/>
+                        <StringItem index="7" value="estadoCivil"/>
+                        <StringItem index="8" value="numeroEmergencia"/>
+                        <StringItem index="9" value="correoEmergencia"/>
+                        <StringItem index="10" value="idiomas"/>
+                        <StringItem index="11" value="graduacion"/>
+                        <StringItem index="12" value="titulo"/>
+                        <StringItem index="13" value="estudiosAfines"/>
+                        <StringItem index="14" value="certificaciones"/>
+                        <StringItem index="15" value="nivelEstudio"/>
+                        <StringItem index="16" value="experiencia"/>
+                        <StringItem index="17" value="numeroReferencia"/>
+                        <StringItem index="18" value="correoReferencia"/>
+                        <StringItem index="19" value="tipoEmpleado"/>
+                        <StringItem index="20" value="salarioEsperado"/>
+                        <StringItem index="21" value="nombreReferencia"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -3073,7 +3090,6 @@
                               </Group>
                               <Component id="jLabel112" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jb_crearEmpresa" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
@@ -4218,12 +4234,15 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JList" name="jList2">
+                        <Component class="javax.swing.JList" name="jlist_Solicitudes">
                           <Properties>
                             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                               <StringArray count="0"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlist_SolicitudesMouseClicked"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
@@ -4304,6 +4323,9 @@
                       <Color blue="99" green="99" red="ff" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel41MouseClicked"/>
+                  </Events>
 
                   <Layout>
                     <DimensionLayout dim="0">
@@ -4337,9 +4359,6 @@
                         <Property name="horizontalAlignment" type="int" value="0"/>
                         <Property name="text" type="java.lang.String" value="Modificar Solicitud"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jl_modificarSolicitudMouseClicked"/>
-                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -5089,11 +5108,15 @@
                 <Component class="javax.swing.JComboBox" name="cb_atributoSolicitud">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="nombre"/>
-                        <StringItem index="1" value="direccion"/>
-                        <StringItem index="2" value="celular"/>
-                        <StringItem index="3" value="telefonoOficina"/>
+                      <StringArray count="8">
+                        <StringItem index="0" value="puesto"/>
+                        <StringItem index="1" value="salario"/>
+                        <StringItem index="2" value="tipoEmpleo"/>
+                        <StringItem index="3" value="funcion"/>
+                        <StringItem index="4" value="tituloRequisito"/>
+                        <StringItem index="5" value="nivelEstudioMinimo"/>
+                        <StringItem index="6" value="experiencia"/>
+                        <StringItem index="7" value="cupos"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -5375,7 +5398,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable2">
+                    <Component class="javax.swing.JTable" name="jtable_Aplicantes">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="f1" green="f3" red="e8" type="rgb"/>
@@ -5413,7 +5436,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JList" name="jList3">
+                    <Component class="javax.swing.JList" name="jlist_SolicitudAplicante">
                       <Properties>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                           <StringArray count="0"/>
@@ -5447,7 +5470,7 @@
                     <Property name="text" type="java.lang.String" value="---&gt;"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>

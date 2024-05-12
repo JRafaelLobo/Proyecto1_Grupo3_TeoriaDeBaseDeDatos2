@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Set;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -101,9 +102,9 @@ public class Main extends javax.swing.JFrame {
         jPanel6 = new FondoPanel("./Imagenes\\login.png");
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Username = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        Password = new javax.swing.JPasswordField();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -197,10 +198,10 @@ public class Main extends javax.swing.JFrame {
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
-        tf_nuevovalorAgente1 = new javax.swing.JTextField();
+        tf_nuevovalorPersona = new javax.swing.JTextField();
         JB_modificarAgente1 = new javax.swing.JButton();
-        CB_modificarAgente1 = new javax.swing.JComboBox<>();
-        cb_atributoAgente1 = new javax.swing.JComboBox<>();
+        CB_modificarEmpleado = new javax.swing.JComboBox<>();
+        cb_atributoPersona = new javax.swing.JComboBox<>();
         Jf_formularioEmpresa = new javax.swing.JFrame();
         jPanel29 = new FondoPanel("./Imagenes\\fondoFormulario.jpg");
         jPanel30 = new javax.swing.JPanel();
@@ -266,7 +267,7 @@ public class Main extends javax.swing.JFrame {
         jPanel40 = new javax.swing.JPanel();
         jPanel43 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        jlist_Solicitudes = new javax.swing.JList<>();
         jLabel84 = new javax.swing.JLabel();
         jLabel86 = new javax.swing.JLabel();
         jLabel88 = new javax.swing.JLabel();
@@ -327,10 +328,10 @@ public class Main extends javax.swing.JFrame {
         jPanel56 = new FondoPanel("./Imagenes\\fondo_ver.png");
         jPanel57 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jtable_Aplicantes = new javax.swing.JTable();
         jl_verEntidad1 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
+        jlist_SolicitudAplicante = new javax.swing.JList<>();
         jl_verEntidad2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -670,7 +671,7 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(191, 191, 191)
                                 .addComponent(jLabel18))
                             .addGroup(JP_AdminEmpresa1Layout.createSequentialGroup()
-                                .addGap(160, 160, 160)
+                                .addGap(159, 159, 159)
                                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(JP_AdminEmpresa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(JP_AdminEmpresa1Layout.createSequentialGroup()
@@ -1001,9 +1002,9 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(121, 19, 1));
         jLabel2.setText("Username:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                UsernameActionPerformed(evt);
             }
         });
 
@@ -1056,9 +1057,9 @@ public class Main extends javax.swing.JFrame {
                         .addGap(81, 81, 81)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1)
+                            .addComponent(Username)
                             .addComponent(jLabel3)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)))
+                            .addComponent(Password, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(184, 184, 184)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1072,11 +1073,11 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(108, Short.MAX_VALUE))
@@ -1852,7 +1853,7 @@ public class Main extends javax.swing.JFrame {
         jLabel64.setForeground(new java.awt.Color(245, 253, 255));
         jLabel64.setText("Atributo:");
 
-        tf_nuevovalorAgente1.setBackground(new java.awt.Color(204, 204, 204));
+        tf_nuevovalorPersona.setBackground(new java.awt.Color(204, 204, 204));
 
         JB_modificarAgente1.setFont(new java.awt.Font("Montserrat Thin", 1, 24)); // NOI18N
         JB_modificarAgente1.setText("Modificar");
@@ -1861,13 +1862,8 @@ public class Main extends javax.swing.JFrame {
                 JB_modificarAgente1MouseClicked(evt);
             }
         });
-        JB_modificarAgente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JB_modificarAgente1ActionPerformed(evt);
-            }
-        });
 
-        cb_atributoAgente1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "nombre", "direccion", "celular", "telefonoOficina" }));
+        cb_atributoPersona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "nombre", "identidad", "correo", "residencia", "nacimiento", "telefono", "nacionalidad", "estadoCivil", "numeroEmergencia", "correoEmergencia", "idiomas", "graduacion", "titulo", "estudiosAfines", "certificaciones", "nivelEstudio", "experiencia", "numeroReferencia", "correoReferencia", "tipoEmpleado", "salarioEsperado", "nombreReferencia" }));
 
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
@@ -1881,9 +1877,9 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel61))
                 .addGap(79, 79, 79)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tf_nuevovalorAgente1)
-                    .addComponent(CB_modificarAgente1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cb_atributoAgente1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tf_nuevovalorPersona)
+                    .addComponent(CB_modificarEmpleado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cb_atributoPersona, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -1902,15 +1898,15 @@ public class Main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel61)
-                    .addComponent(CB_modificarAgente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CB_modificarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel64)
-                    .addComponent(cb_atributoAgente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_atributoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel63)
-                    .addComponent(tf_nuevovalorAgente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_nuevovalorPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(JB_modificarAgente1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
@@ -2143,7 +2139,6 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(tf_ClaveEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                         .addGap(3, 3, 3))
                     .addComponent(jLabel112))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jb_crearEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
         );
@@ -2573,7 +2568,12 @@ public class Main extends javax.swing.JFrame {
 
         jPanel43.setBackground(new java.awt.Color(216, 226, 220));
 
-        jScrollPane5.setViewportView(jList2);
+        jlist_Solicitudes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlist_SolicitudesMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(jlist_Solicitudes);
 
         jLabel84.setFont(new java.awt.Font("Segoe Script", 1, 24)); // NOI18N
         jLabel84.setForeground(new java.awt.Color(104, 141, 138));
@@ -2621,16 +2621,16 @@ public class Main extends javax.swing.JFrame {
         jLabel90.setText("Modificar Solicitud:");
 
         jPanel41.setBackground(new java.awt.Color(255, 153, 153));
+        jPanel41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel41MouseClicked(evt);
+            }
+        });
 
         jl_modificarSolicitud.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jl_modificarSolicitud.setForeground(new java.awt.Color(253, 239, 236));
         jl_modificarSolicitud.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jl_modificarSolicitud.setText("Modificar Solicitud");
-        jl_modificarSolicitud.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jl_modificarSolicitudMouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel41Layout = new javax.swing.GroupLayout(jPanel41);
         jPanel41.setLayout(jPanel41Layout);
@@ -3062,7 +3062,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        cb_atributoSolicitud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "nombre", "direccion", "celular", "telefonoOficina" }));
+        cb_atributoSolicitud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "puesto", "salario", "tipoEmpleo", "funcion", "tituloRequisito", "nivelEstudioMinimo", "experiencia", "cupos" }));
 
         javax.swing.GroupLayout jPanel50Layout = new javax.swing.GroupLayout(jPanel50);
         jPanel50.setLayout(jPanel50Layout);
@@ -3233,9 +3233,9 @@ public class Main extends javax.swing.JFrame {
 
         jPanel57.setBackground(new java.awt.Color(248, 237, 235));
 
-        jTable2.setBackground(new java.awt.Color(232, 243, 241));
-        jTable2.setForeground(new java.awt.Color(102, 102, 130));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_Aplicantes.setBackground(new java.awt.Color(232, 243, 241));
+        jtable_Aplicantes.setForeground(new java.awt.Color(102, 102, 130));
+        jtable_Aplicantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -3246,13 +3246,13 @@ public class Main extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane6.setViewportView(jTable2);
+        jScrollPane6.setViewportView(jtable_Aplicantes);
 
         jl_verEntidad1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jl_verEntidad1.setForeground(new java.awt.Color(121, 19, 1));
         jl_verEntidad1.setText("Solicitudes");
 
-        jScrollPane7.setViewportView(jList3);
+        jScrollPane7.setViewportView(jlist_SolicitudAplicante);
 
         jl_verEntidad2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jl_verEntidad2.setForeground(new java.awt.Color(121, 19, 1));
@@ -3261,9 +3261,9 @@ public class Main extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(254, 197, 187));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("--->");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
             }
         });
 
@@ -3385,27 +3385,50 @@ public class Main extends javax.swing.JFrame {
         JF_VerEntidades.setLocationRelativeTo(Jf_VentanaAdmin);
     }//GEN-LAST:event_JP_BotonCrudSolicitudMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_UsernameActionPerformed
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
-        Jf_VentanaAdmin.setVisible(true);
-        Jf_VentanaAdmin.pack();
-        Jf_VentanaAdmin.setLocationRelativeTo(JF_login);
-        Jf_VentanaAdmin.setExtendedState(MAXIMIZED_BOTH);
-        JF_login.setVisible(false);
-//Empresa
-        jf_VistaEmpresa.setVisible(true);
-        jf_VistaEmpresa.pack();
-        jf_VistaEmpresa.setLocationRelativeTo(JF_login);
-        JF_login.setVisible(false);
+        String[] resultado = j.iniciarSesion(Username.getText(), Password.getText());
+
+        if (resultado.length < 2) {
+            JOptionPane.showMessageDialog(JF_login, resultado[0]);
+            return;
+        }
+        idUsuario = resultado[0];
+        idActivo = resultado[1];
+
+        String tipoUsuario = resultado[2];
+        if (tipoUsuario.equals("admin")) {
+            Jf_VentanaAdmin.setVisible(true);
+            Jf_VentanaAdmin.pack();
+            Jf_VentanaAdmin.setLocationRelativeTo(JF_login);
+            Jf_VentanaAdmin.setExtendedState(MAXIMIZED_BOTH);
+            JF_login.setVisible(false);
+            return;
+        }
+        //Empresa
+        if (tipoUsuario.equals("empresa")) {
+
+            jf_VistaEmpresa.setVisible(true);
+            jf_VistaEmpresa.pack();
+            jf_VistaEmpresa.setLocationRelativeTo(JF_login);
+            JF_login.setVisible(false);
+            return;
+        }
         //Empleado
-        jp_DetallesSolicitud.setVisible(false);
-        jf_VistaPersona.setVisible(true);
-        jf_VistaPersona.pack();
-        jf_VistaPersona.setLocationRelativeTo(JF_login);
-        JF_login.setVisible(false);
+        if (tipoUsuario.equals("persona")) {
+
+            jp_DetallesSolicitud.setVisible(false);
+            jf_VistaPersona.setVisible(true);
+            jf_VistaPersona.pack();
+            jf_VistaPersona.setLocationRelativeTo(JF_login);
+            JF_login.setVisible(false);
+            return;
+        }
+
+        JOptionPane.showMessageDialog(JF_login, "Un error desconocido ha ocurido");
     }//GEN-LAST:event_jPanel7MouseClicked
 
     private void JB_crearEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_crearEmpresaMouseClicked
@@ -3463,7 +3486,7 @@ public class Main extends javax.swing.JFrame {
         String clave = tf_claveUsuario.getText();
 
         j.CrearPersona(nom_Empleado, numId_Empleado, cElectronico_Empleado, Residencia_Empleado, FechaNacimiento_Empleado, numTel_Empleado, Nacionalidad_Empleado, estadoCivil_Empleado, numEmergencia_Empleado, cEmergencia_Empleado, idioma_Empleado, AnioGraduacion_Empleado, Titulo_Empleado, EstudiosAfines_Empleado, Certificaciones_Empleado, nivelEstudio_Empleado, AniosExperencia_Empleado, numReferencia_Empleado, cReferencia_Empleado, tipoEmpleo_Empleado, SalarioEsperado_Empleado, nombreReferencia_Empleado, Usuario, clave);
-        JOptionPane.showConfirmDialog(Jf_formularioEmpleado3, "Se ha creado Persona");
+        JOptionPane.showMessageDialog(Jf_formularioEmpleado3, "Se ha creado Persona");
 //cerrar
         tf_aExperienciaCrearEmpleado.setText("");
         tf_aGraduacionCrearEmpleado.setText("");
@@ -3489,7 +3512,7 @@ public class Main extends javax.swing.JFrame {
 
     private void JB_modificarAgenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_modificarAgenteMouseClicked
         String id = (String) CB_modificarAgente.getSelectedItem();
-        id = j.extraerIdEmpresa(id);
+        id = j.extraerId(id);
         String atributo = (String) cb_atributoAgente.getSelectedItem();
         String valor = (String) tf_nuevovalorAgente.getText();
         Boolean valido = true;
@@ -3534,11 +3557,13 @@ public class Main extends javax.swing.JFrame {
 
     private void JB_modificarAgente1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_modificarAgente1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_JB_modificarAgente1MouseClicked
+        String id = (String) CB_modificarEmpleado.getSelectedItem();
+        id = j.extraerId(id);
+        String atributo = (String) cb_atributoPersona.getSelectedItem();
+        String valor = (String) tf_nuevovalorPersona.getText();
 
-    private void JB_modificarAgente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_modificarAgente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JB_modificarAgente1ActionPerformed
+        j.modificarPersona(id, atributo, valor);
+    }//GEN-LAST:event_JB_modificarAgente1MouseClicked
 
     private void jb_crearEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearEmpresaMouseClicked
         String nombrecrearEmpresa = tf_nombrecrearEmpresa.getText();
@@ -3553,9 +3578,9 @@ public class Main extends javax.swing.JFrame {
         String clave = tf_ClaveEmpresa.getText();
         try {
             j.CrearEmpresa(nombrecrearEmpresa, cifcrearEmpresa, directorcrearEmpresa, direccioncrearEmpresa, rubrocrearEmpresa, sectorcrearEmpresa, fechafundacioncrearEmpresa, nacionOrignencrearEmpresa, usuario, clave);
-            JOptionPane.showConfirmDialog(Jf_formularioEmpresa, "Se ha creado la Empresa");
+            JOptionPane.showMessageDialog(Jf_formularioEmpresa, "Se ha creado la Empresa");
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(Jf_formularioEmpresa, "Ha Fallado la creacion de la empresa");
+            JOptionPane.showMessageDialog(Jf_formularioEmpresa, "Ha Fallado la creacion de la empresa");
         }
         Jf_formularioEmpresa.setVisible(false);
     }//GEN-LAST:event_jb_crearEmpresaMouseClicked
@@ -3571,6 +3596,10 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_JB_crearEmpresa4MouseClicked
 
     private void JB_crearEmpresa8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_crearEmpresa8MouseClicked
+        Set<String> nombresEmpleados = j.listarPersonas();
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(nombresEmpleados.toArray(new String[0]));
+        CB_modificarEmpleado.setModel(model);
+
         Jf_modificarEmpleado.setVisible(true);
         Jf_modificarEmpleado.pack();
         Jf_modificarEmpleado.setLocationRelativeTo(Jf_VentanaAdmin);
@@ -3580,6 +3609,8 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String id = (String) cb_eliminarEmpleado.getSelectedItem();
+        id = j.extraerId(id);
+        j.eliminarPersona(id);
         //consulta
         Jf_eliminarEmpleado.setVisible(false);
         JOptionPane.showMessageDialog(Jf_eliminarEmpleado, "Agente eliminado exitosamente");
@@ -3589,6 +3620,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String id = (String) cb_eliminarEmpresa.getSelectedItem();
+        id = j.extraerId(id);
         j.eliminarEmpresa(id);
         //consulta
         Jf_eliminarEmpresa.setVisible(false);
@@ -3596,12 +3628,20 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_JB_eliminarEmpresaMouseClicked
 
     private void JB_crearEmpresa7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_crearEmpresa7MouseClicked
+        Set<String> nombres = j.listarPersonas();
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(nombres.toArray(new String[0]));
+        cb_eliminarEmpleado.setModel(model);
+
         Jf_eliminarEmpleado.setVisible(true);
         Jf_eliminarEmpleado.pack();
         Jf_eliminarEmpleado.setLocationRelativeTo(Jf_VentanaAdmin);
     }//GEN-LAST:event_JB_crearEmpresa7MouseClicked
 
     private void JB_crearEmpresa5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_crearEmpresa5MouseClicked
+        Set<String> nombres = j.listarEmpresas();
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(nombres.toArray(new String[0]));
+        cb_eliminarEmpresa.setModel(model);
+
         Jf_eliminarEmpresa.setVisible(true);
         Jf_eliminarEmpresa.pack();
         Jf_eliminarEmpresa.setLocationRelativeTo(Jf_VentanaAdmin);
@@ -3622,7 +3662,7 @@ public class Main extends javax.swing.JFrame {
         String experiencia = tf_ExperienciaTrabajo.getText();
         String cupos = tf_Cupos.getText();
         j.crearTrabajo(Puesto, Salario, TipoEmpleo, funcion, TituloRequisito, NivelEstudioMinimo, experiencia, cupos, idActivo);
-
+        JOptionPane.showMessageDialog(Jf_formulariosolicitud, "se ha creado la Solicitud exitosamente");
         Jf_formulariosolicitud.setVisible(false);
     }//GEN-LAST:event_jp_crearSolicitudMouseClicked
 
@@ -3633,42 +3673,81 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jl_crearSolicitudMouseClicked
 
     private void JB_modificarSolicitudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_modificarSolicitudMouseClicked
+
         // TODO add your handling code here:
+        String id = (String) CB_modificarSolicitud.getSelectedItem();
+        id = j.extraerId(id);
+        String atributo = (String) cb_atributoSolicitud.getSelectedItem();
+        String valor = (String) tf_nuevovalorSolicitud.getText();
+
+        j.modificarTrabajo(id, atributo, valor);
+        JOptionPane.showMessageDialog(Jf_modificarSolicitud, "Se ha modificado el trabajo");
+
     }//GEN-LAST:event_JB_modificarSolicitudMouseClicked
 
     private void JB_modificarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_modificarSolicitudActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JB_modificarSolicitudActionPerformed
 
-    private void jl_modificarSolicitudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_modificarSolicitudMouseClicked
-        Jf_modificarSolicitud.setVisible(true);
-        Jf_modificarSolicitud.pack();
-        Jf_modificarSolicitud.setLocationRelativeTo(jf_VistaEmpresa);
-    }//GEN-LAST:event_jl_modificarSolicitudMouseClicked
-
     private void JB_eliminarSolicitudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_eliminarSolicitudMouseClicked
         // TODO add your handling code here:
+        String id = (String) cb_eliminarSolicitud.getSelectedItem();
+        id = j.extraerId(id);
+        j.eliminarTrabajo(id, idActivo);
+
+        Jf_eliminarSolicitud.setVisible(false);
+
     }//GEN-LAST:event_JB_eliminarSolicitudMouseClicked
 
     private void jLabel93MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel93MouseClicked
+        Set<String> nombres = j.listarTrabajos(idActivo);
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(nombres.toArray(new String[0]));
+        cb_eliminarSolicitud.setModel(model);
+
         Jf_eliminarSolicitud.setVisible(true);
         Jf_eliminarSolicitud.pack();
         Jf_eliminarSolicitud.setLocationRelativeTo(jf_VistaEmpresa);
     }//GEN-LAST:event_jLabel93MouseClicked
 
     private void jl_modificarSolicitud3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_modificarSolicitud3MouseClicked
+
+        DefaultListModel<String> model = j.listarTrabajosJList(idActivo);
+        jlist_SolicitudAplicante.setModel(model);
+
         JF_VerSolicitudes.setVisible(true);
         JF_VerSolicitudes.pack();
         JF_VerSolicitudes.setLocationRelativeTo(jf_VistaEmpresa);
     }//GEN-LAST:event_jl_modificarSolicitud3MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void tf_ExperienciaTrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_ExperienciaTrabajoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_ExperienciaTrabajoActionPerformed
+
+    private void jPanel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel41MouseClicked
+        // TODO add your handling code here:
+        Set<String> nombres = j.listarTrabajos(idActivo);
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(nombres.toArray(new String[0]));
+        CB_modificarSolicitud.setModel(model);
+
+        Jf_modificarSolicitud.setVisible(true);
+        Jf_modificarSolicitud.pack();
+        Jf_modificarSolicitud.setLocationRelativeTo(jf_VistaEmpresa);
+    }//GEN-LAST:event_jPanel41MouseClicked
+
+    private void jlist_SolicitudesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlist_SolicitudesMouseClicked
+        // TODO add your handling code here:
+        DefaultListModel<String> model = j.listarTrabajosJList(idActivo);
+        jlist_Solicitudes.setModel(model);
+    }//GEN-LAST:event_jlist_SolicitudesMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        String id = jlist_SolicitudAplicante.getSelectedValue();
+        id = j.extraerId(id);
+        DefaultTableModel m = j.mostrarAplicantesTrabajo(id);
+        jtable_Aplicantes.setModel(m);
+
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -3707,7 +3786,7 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CB_modificarAgente;
-    private javax.swing.JComboBox<String> CB_modificarAgente1;
+    private javax.swing.JComboBox<String> CB_modificarEmpleado;
     private javax.swing.JComboBox<String> CB_modificarSolicitud;
     private javax.swing.JPanel JB_crearEmpresa;
     private javax.swing.JPanel JB_crearEmpresa4;
@@ -3741,11 +3820,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JFrame Jf_modificarEmpleado;
     private javax.swing.JFrame Jf_modificarEmpresa;
     private javax.swing.JFrame Jf_modificarSolicitud;
+    private javax.swing.JPasswordField Password;
     private javax.swing.JFrame Portadita;
     private javax.swing.JTable Table_MostrarDetalle;
+    private javax.swing.JTextField Username;
     private javax.swing.JComboBox<String> cb_EstadoCivilcrearEmpleado;
     private javax.swing.JComboBox<String> cb_atributoAgente;
-    private javax.swing.JComboBox<String> cb_atributoAgente1;
+    private javax.swing.JComboBox<String> cb_atributoPersona;
     private javax.swing.JComboBox<String> cb_atributoSolicitud;
     private javax.swing.JComboBox<String> cb_eliminarEmpleado;
     private javax.swing.JComboBox<String> cb_eliminarEmpresa;
@@ -3863,8 +3944,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jList3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -3919,7 +3998,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -3930,8 +4008,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jb_buscarEmpresa;
     private javax.swing.JButton jb_buscarPersona;
     private javax.swing.JPanel jb_crearEmpresa;
@@ -3947,10 +4023,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jl_verEntidad;
     private javax.swing.JLabel jl_verEntidad1;
     private javax.swing.JLabel jl_verEntidad2;
+    private javax.swing.JList<String> jlist_SolicitudAplicante;
+    private javax.swing.JList<String> jlist_Solicitudes;
     private javax.swing.JPanel jp_DetallesSolicitud;
     private javax.swing.JPanel jp_crearSolicitud;
     private javax.swing.JTable jt_BuscarEmpresa;
     private javax.swing.JTable jt_BuscarEmpresa1;
+    private javax.swing.JTable jtable_Aplicantes;
     private javax.swing.JTextField tf_CIFcrearEmpresa;
     private javax.swing.JPasswordField tf_ClaveEmpresa;
     private javax.swing.JTextField tf_Cupos;
@@ -3984,7 +4063,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField tf_nombrecrearEmpresa;
     private javax.swing.JTextField tf_nomcrearEmpleado;
     private javax.swing.JTextField tf_nuevovalorAgente;
-    private javax.swing.JTextField tf_nuevovalorAgente1;
+    private javax.swing.JTextField tf_nuevovalorPersona;
     private javax.swing.JTextField tf_nuevovalorSolicitud;
     private javax.swing.JTextField tf_numEmergenciaCrearEmpleado;
     private javax.swing.JTextField tf_numIdcrearEmpleado;

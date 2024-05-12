@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 import redis.clients.jedis.Jedis;
 
@@ -15,6 +16,24 @@ public class JedisConector {
         // Crear una conexión a un servidor Redis
         jedis = new Jedis("redis-19086.c256.us-east-1-2.ec2.redns.redis-cloud.com", 19086);
         jedis.auth("Ssc2Sld7FVY2wfXosDhwnq6eeRN2VBK0"); // Autenticación si es necesaria
+    }
+
+    public String[] iniciarSesion(String usuario, String clave) {
+        String id = jedis.hget("index:nombre:usuario", usuario);
+        if (id != null) {
+            String contraAlmacenada = jedis.hget("usuario:" + id, "contra");
+            if (clave.equals(contraAlmacenada)) {
+                String[] temp = new String[3];
+                temp[0] = id;
+                temp[1] = jedis.hget("usuario:" + id, "idVinculado");
+                temp[2] = jedis.hget("usuario:" + id, "tipoUsuario");
+                return temp; // Inicio de sesión exitoso
+            } else {
+                return new String[]{"Contraseña incorrecta"}; // Contraseña incorrecta
+            }
+        } else {
+            return new String[]{"Usuario no encontrado"}; // Usuario no encontrado
+        }
     }
 
     // Métodos para interactuar con Redis
@@ -126,45 +145,45 @@ public class JedisConector {
 
         // Crear un hash con los datos del trabajo
         Map<String, String> datosTrabajo = new HashMap<>();
-        datosTrabajo.put("Puesto", puesto);
-        datosTrabajo.put("Salario", salario);
-        datosTrabajo.put("TipoEmpleo", tipoEmpleo);
-        datosTrabajo.put("Funcion", funcion);
-        datosTrabajo.put("TituloRequisito", tituloRequisito);
-        datosTrabajo.put("NivelEstudioMinimo", nivelEstudioMinimo);
-        datosTrabajo.put("Experiencia", experiencia);
-        datosTrabajo.put("Cupos", cupos);
-        datosTrabajo.put("IdEmpresa", idEmpresa);
+        datosTrabajo.put("puesto", puesto);
+        datosTrabajo.put("salario", salario);
+        datosTrabajo.put("tipoEmpleo", tipoEmpleo);
+        datosTrabajo.put("funcion", funcion);
+        datosTrabajo.put("tituloRequisito", tituloRequisito);
+        datosTrabajo.put("nivelEstudioMinimo", nivelEstudioMinimo);
+        datosTrabajo.put("experiencia", experiencia);
+        datosTrabajo.put("cupos", cupos);
+        datosTrabajo.put("idEmpresa", idEmpresa);
 
         // Almacenar los datos del trabajo en un hash
-        jedis.hmset("Trabajo:" + id, datosTrabajo);
+        jedis.hmset("trabajo:" + id, datosTrabajo);
         jedis.sadd("index:empresa:trabajo:" + idEmpresa, id);
     }
 
     //Eliminar
     public void eliminarTrabajo(String idTrabajo, String idEmpresa) {
         // Eliminar el trabajo
-        jedis.del("Trabajo:" + idTrabajo);
+        jedis.del("trabajo:" + idTrabajo);
 
         // Eliminar la asociación del trabajo con la empresa
-        jedis.srem("indes:empresa:trabajo:" + idEmpresa, idTrabajo);
+        jedis.srem("index:empresa:trabajo:" + idEmpresa, idTrabajo);
+        jedis.del("index:trabajo:solicitantes:" + idTrabajo);
     }
 
     public void eliminarUsuario(String id) {
-        eliminarPersona(jedis.hget("usuario:" + id, "idVinculado"));
         jedis.hdel("index:nombre:usuario", jedis.hget("usuario:" + id, "nombre"));
         jedis.del("usuario:" + id);
     }
 
     public void eliminarEmpresa(String id) {
         eliminarUsuario(jedis.hget("empresa:" + id, "idUsuario"));
-        jedis.hdel("index:empresa:nombre", jedis.hget("empresa:" + id, "nombre"));
+        jedis.hdel("index:nombre:empresa", jedis.hget("empresa:" + id, "nombre"));
         jedis.del("empresa:" + id);
     }
 
     public void eliminarPersona(String id) {
         eliminarUsuario(jedis.hget("persona:" + id, "idUsuario"));
-        jedis.hdel("persona:nombre:persona", jedis.hget("persona:" + id, "nombre"));
+        jedis.hdel("index:nombre:persona", jedis.hget("persona:" + id, "nombre"));
         jedis.del("persona:" + id);
     }
 
@@ -199,34 +218,84 @@ public class JedisConector {
         }
     }
 
+    public void modificarTrabajo(String id, String campo, String nuevoValor) {
+        jedis.hset("trabajo:" + id, campo, nuevoValor);
+    }
+
     //EL listar es un poco mas complicado lo dejo al final
     public Set<String> listarPersonas() {
 
         Set<String> keys = jedis.keys("persona:*");
-
-//        for (String key : keys) {
-//            Map<String, String> datosPersona = jedis.hgetAll(key);
-//            System.out.println("Persona ID: " + key.substring(8)); // Elimina el prefijo "persona:" para mostrar solo el ID
-//            for (Map.Entry<String, String> entry : datosPersona.entrySet()) {
-//                System.out.println(entry.getKey() + ": " + entry.getValue());
-//            }
-//            System.out.println("-----------------------------------------");
-//        }
-        return keys;
+        Set<String> nombresEmpresas = new HashSet<>();
+        for (String key : keys) {
+            Map<String, String> datosEmpresa = jedis.hgetAll(key);
+            String nombreEmpresa = datosEmpresa.get("nombre");
+            String idEmpresa = key.substring(8); // Obtener solo el ID eliminando el prefijo "Empresa:"
+            nombresEmpresas.add(nombreEmpresa + " (ID: " + idEmpresa + ")");
+        }
+        return nombresEmpresas;
     }
 
     public Set<String> listarTrabajos() {
-        Set<String> keys = jedis.keys("Trabajo:*");
+        Set<String> keys = jedis.keys("trabajo:*");
+        Set<String> nombresEmpresas = new HashSet<>();
+        for (String key : keys) {
+            Map<String, String> datosEmpresa = jedis.hgetAll(key);
+            String nombreEmpresa = datosEmpresa.get("puesto");
+            String idEmpresa = key.substring(8); // Obtener solo el ID eliminando el prefijo "Empresa:"
+            nombresEmpresas.add(nombreEmpresa + " (ID: " + idEmpresa + ")");
+        }
+        return nombresEmpresas;
+    }
 
-//        for (String key : keys) {
+    public Set<String> listarAplicantesDeUnTrabajo(String id) {
+        Set<String> idsTrabajos = jedis.smembers("index:trabajo:solicitantes:" + id);
+
+        System.out.println("Metodo no listo");
+//        // Crear un conjunto para almacenar los nombres de los trabajos
+//        Set<String> nombresTrabajos = new HashSet<>();
+//
+//        // Iterar sobre los IDs de los trabajos y obtener sus detalles
+//        for (String idTrabajo : idsTrabajos) {
+//            String key = "trabajo:" + idTrabajo;
 //            Map<String, String> datosTrabajo = jedis.hgetAll(key);
-//            System.out.println("ID del Trabajo: " + key.substring(8)); // Elimina el prefijo "Trabajo:" para mostrar solo el ID
-//            for (Map.Entry<String, String> entry : datosTrabajo.entrySet()) {
-//                System.out.println(entry.getKey() + ": " + entry.getValue());
-//            }
-//            System.out.println("-----------------------------------------");
+//            String nombreTrabajo = datosTrabajo.get("puesto");
+//            nombresTrabajos.add(nombreTrabajo + " (ID: " + idTrabajo + ")  "+"a");
 //        }
-        return keys;
+        return null;
+        //return nombresTrabajos;
+    }
+
+    public Set<String> listarTrabajos(String id) {
+        Set<String> idsTrabajos = jedis.smembers("index:empresa:trabajo:" + id);
+
+        // Crear un conjunto para almacenar los nombres de los trabajos
+        Set<String> nombresTrabajos = new HashSet<>();
+
+        // Iterar sobre los IDs de los trabajos y obtener sus detalles
+        for (String idTrabajo : idsTrabajos) {
+            String key = "trabajo:" + idTrabajo;
+            Map<String, String> datosTrabajo = jedis.hgetAll(key);
+            String nombreTrabajo = datosTrabajo.get("puesto");
+            nombresTrabajos.add(nombreTrabajo + " (ID: " + idTrabajo + ")");
+        }
+
+        return nombresTrabajos;
+    }
+
+    public DefaultListModel<String> listarTrabajosJList(String idEmpresa) {
+        Set<String> idsTrabajos = jedis.smembers("index:empresa:trabajo:" + idEmpresa);
+
+        DefaultListModel<String> model = new DefaultListModel<>();
+
+        for (String idTrabajo : idsTrabajos) {
+            String key = "trabajo:" + idTrabajo;
+            Map<String, String> datosTrabajo = jedis.hgetAll(key);
+            String nombreTrabajo = datosTrabajo.get("puesto");
+            String cupos = datosTrabajo.get("cupos");
+            model.addElement(" (ID: " + idTrabajo + ")  Puesto: " + nombreTrabajo + "    Cupos: " + cupos);
+        }
+        return model;
     }
 
     public Set<String> listarEmpresas() {
@@ -241,13 +310,25 @@ public class JedisConector {
         return nombresEmpresas;
     }
 
-    public String extraerIdEmpresa(String texto) {
+    public String extraerId(String texto) {
         String[] partes = texto.split("\\(ID: ");
         if (partes.length >= 2) {
             String idEmpresa = partes[1].replace(")", "");
             return idEmpresa;
         }
         return null; // Devuelve null si no se pudo extraer el ID
+    }
+
+    public Set<String> listarUsuario() {
+        Set<String> keys = jedis.keys("usuario:*");
+        Set<String> nombresEmpresas = new HashSet<>();
+        for (String key : keys) {
+            Map<String, String> datosEmpresa = jedis.hgetAll(key);
+            String nombreEmpresa = datosEmpresa.get("nombre");
+            String idEmpresa = key.substring(8); // Obtener solo el ID eliminando el prefijo "Empresa:"
+            nombresEmpresas.add(nombreEmpresa + " (ID: " + idEmpresa + ")");
+        }
+        return nombresEmpresas;
     }
 
     public void agregarSolicitante(String idTrabajo, String idPersona) {
@@ -288,6 +369,73 @@ public class JedisConector {
 
     public DefaultTableModel mostrarDetallesPersonas() {
         Set<String> keys = jedis.keys("persona:*");
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("ID");
+        model.addColumn("Nombre");
+        model.addColumn("Identidad");
+        model.addColumn("Correo");
+        model.addColumn("Residencia");
+        model.addColumn("Nacimiento");
+        model.addColumn("Teléfono");
+        model.addColumn("Nacionalidad");
+        model.addColumn("Estado Civil");
+        model.addColumn("Número de Emergencia");
+        model.addColumn("Correo de Emergencia");
+        model.addColumn("Idiomas");
+        model.addColumn("Graduación");
+        model.addColumn("Título");
+        model.addColumn("Estudios Afines");
+        model.addColumn("Certificaciones");
+        model.addColumn("Nivel de Estudio");
+        model.addColumn("Experiencia");
+        model.addColumn("Número de Referencia");
+        model.addColumn("Correo de Referencia");
+        model.addColumn("Tipo de Empleado");
+        model.addColumn("Salario Esperado");
+        model.addColumn("Nombre de Referencia");
+
+        for (String key : keys) {
+            Map<String, String> datosPersona = jedis.hgetAll(key);
+            String idPersona = key.substring(8); // Obtener solo el ID eliminando el prefijo "persona:"
+
+            model.addRow(new Object[]{
+                idPersona,
+                datosPersona.get("nombre"),
+                datosPersona.get("identidad"),
+                datosPersona.get("correo"),
+                datosPersona.get("residencia"),
+                datosPersona.get("nacimiento"),
+                datosPersona.get("telefono"),
+                datosPersona.get("nacionalidad"),
+                datosPersona.get("estadoCivil"),
+                datosPersona.get("numeroEmergencia"),
+                datosPersona.get("correoEmergencia"),
+                datosPersona.get("idiomas"),
+                datosPersona.get("graduacion"),
+                datosPersona.get("titulo"),
+                datosPersona.get("estudiosAfines"),
+                datosPersona.get("certificaciones"),
+                datosPersona.get("nivelEstudio"),
+                datosPersona.get("experiencia"),
+                datosPersona.get("numeroReferencia"),
+                datosPersona.get("correoReferencia"),
+                datosPersona.get("tipoEmpleado"),
+                datosPersona.get("salarioEsperado"),
+                datosPersona.get("nombreReferencia")
+            });
+        }
+
+        return model;
+    }
+
+    public DefaultTableModel mostrarAplicantesTrabajo(String id) {
+        Set<String> idEmpleados = jedis.smembers("index:trabajo:solicitantes:" + id);
+        Set<String> keys = new HashSet<>();
+
+        for (String idEmpleado : idEmpleados) {
+            keys.add("personas:" + idEmpleado);
+        }
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID");
