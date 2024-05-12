@@ -341,7 +341,7 @@ public class Main extends javax.swing.JFrame {
         jf_VerSolicitudespersona = new javax.swing.JFrame();
         jPanel54 = new FondoPanel("./Imagenes\\fondoLogin.png");
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtable_SolicitudPersona = new javax.swing.JTable();
 
         Portadita.setUndecorated(true);
 
@@ -2628,7 +2628,6 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(jPanel36Layout.createSequentialGroup()
                             .addGap(144, 144, 144)
                             .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -3439,7 +3438,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_SolicitudPersona.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -3450,7 +3449,7 @@ public class Main extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane8.setViewportView(jTable1);
+        jScrollPane8.setViewportView(jtable_SolicitudPersona);
 
         javax.swing.GroupLayout jPanel54Layout = new javax.swing.GroupLayout(jPanel54);
         jPanel54.setLayout(jPanel54Layout);
@@ -3501,7 +3500,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JP_BotonCrudEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JP_BotonCrudEmpresaMouseClicked
-              jl_verEntidad.setText("Empresa");
+        jl_verEntidad.setText("Empresa");
 
         DefaultTableModel restart = new DefaultTableModel(0, 0);
         Table_MostrarDetalle.setModel(restart);
@@ -3515,7 +3514,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_JP_BotonCrudEmpresaMouseClicked
 
     private void JP_BotonCrudPersonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JP_BotonCrudPersonaMouseClicked
-       jl_verEntidad.setText("Persona");
+        jl_verEntidad.setText("Persona");
         DefaultTableModel restart = new DefaultTableModel(0, 0);
         Table_MostrarDetalle.setModel(restart);
         DefaultTableModel d = j.mostrarDetallesPersonas();
@@ -3527,7 +3526,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_JP_BotonCrudPersonaMouseClicked
 
     private void JP_BotonCrudSolicitudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JP_BotonCrudSolicitudMouseClicked
-            jl_verEntidad.setText("Solicitudes");
+        jl_verEntidad.setText("Solicitudes");
 
         DefaultTableModel restart = new DefaultTableModel(0, 0);
         Table_MostrarDetalle.setModel(restart);
@@ -3855,12 +3854,12 @@ public class Main extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(Jf_formulariosolicitud, "se ha creado la Solicitud exitosamente");
         Jf_formulariosolicitud.setVisible(false);
         tf_Puesto.setText("");
-       
+
         tf_SalarioTrabajo.setText("");
         tf_TipoEmpleadoTrabajo.setText("");
         tf_FuncionTrabajo.setText("");
         tf_TituloRequisitoTrabajo.setText("");
-       tf_NivelDeEstudioMinimo.setText("");
+        tf_NivelDeEstudioMinimo.setText("");
         tf_ExperienciaTrabajo.setText("");
         tf_Cupos.setText("");
     }//GEN-LAST:event_jp_crearSolicitudMouseClicked
@@ -3973,6 +3972,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_buscarEmpresaMouseClicked
 
     private void jPanel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel53MouseClicked
+        DefaultTableModel m = j.mostrarTrabajosSolicitados(idActivo);
+        jtable_SolicitudPersona.setModel(m);
+
         jf_VerSolicitudespersona.setVisible(true);
         jf_VerSolicitudespersona.pack();
         jf_VerSolicitudespersona.setLocationRelativeTo(jf_VistaPersona);
@@ -3980,6 +3982,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel53MouseClicked
 
     private void jLabel114MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel114MouseClicked
+        DefaultTableModel m = j.mostrarTrabajosAceptados(idActivo);
+        jtable_SolicitudPersona.setModel(m);
+
         jf_VerSolicitudespersona.setVisible(true);
         jf_VerSolicitudespersona.pack();
         jf_VerSolicitudespersona.setLocationRelativeTo(jf_VistaPersona);
@@ -4249,7 +4254,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton jb_buscarEmpresa;
     private javax.swing.JButton jb_buscarPersona;
     private javax.swing.JPanel jb_crearEmpresa;
@@ -4274,6 +4278,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable jt_BuscarEmpresa;
     private javax.swing.JTable jt_BuscarEmpresa1;
     private javax.swing.JTable jtable_Aplicantes;
+    private javax.swing.JTable jtable_SolicitudPersona;
     private javax.swing.JTextField tf_CIFcrearEmpresa;
     private javax.swing.JPasswordField tf_ClaveEmpresa;
     private javax.swing.JTextField tf_Cupos;

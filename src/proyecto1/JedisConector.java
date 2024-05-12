@@ -173,6 +173,21 @@ public class JedisConector {
             jedis.srem("index:solicitud:trabajo:" + idPersona, idTrabajo);
         }
 
+        // Obtener los IDs de los trabajadores aceptados para el trabajo
+        Set<String> idsEmpleadosAceptados = jedis.smembers("trabajo:trabajadores:" + idTrabajo);
+
+        // Eliminar las relaciones entre el trabajo y los trabajadores aceptados
+        for (String idEmpleado : idsEmpleadosAceptados) {
+            jedis.srem("trabajo:trabajadores:" + idTrabajo, idEmpleado);
+        }
+
+        // Eliminar las solicitudes asociadas al trabajo
+        Set<String> idsSolicitudes = jedis.smembers("index:trabajo:solicitantes:" + idTrabajo);
+        for (String idSolicitud : idsSolicitudes) {
+            jedis.srem("index:trabajo:solicitantes:" + idTrabajo, idSolicitud);
+            jedis.del("solicitud:" + idSolicitud);
+        }
+        
         // Finalmente, eliminar el trabajo
         jedis.del("trabajo:" + idTrabajo);
         jedis.del("index:trabajo:solicitantes:" + idTrabajo);
@@ -670,6 +685,107 @@ public class JedisConector {
         }
 
         return model;
+    }
+
+    public DefaultTableModel mostrarTrabajosSolicitados(String idSolicitante) {
+        // Obtener los IDs de los trabajos solicitados por el solicitante
+        Set<String> idsTrabajos = jedis.smembers("index:solicitud:trabajo:" + idSolicitante);
+
+        // Crear un modelo de tabla con las columnas necesarias
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("ID");
+        model.addColumn("Puesto");
+        model.addColumn("Salario");
+        model.addColumn("Tipo de Empleo");
+        model.addColumn("Función");
+        model.addColumn("Nivel de Estudio Mínimo");
+        model.addColumn("Experiencia");
+
+        // Para cada trabajo solicitado, obtener los datos y agregarlos al modelo
+        for (String idTrabajo : idsTrabajos) {
+            Map<String, String> datosTrabajo = jedis.hgetAll("trabajo:" + idTrabajo);
+            model.addRow(new Object[]{
+                idTrabajo,
+                datosTrabajo.get("puesto"),
+                datosTrabajo.get("salario"),
+                datosTrabajo.get("tipoEmpleo"),
+                datosTrabajo.get("funcion"),
+                datosTrabajo.get("nivelEstudioMinimo"),
+                datosTrabajo.get("experiencia")
+            });
+        }
+
+        return model;
+    }
+
+    public DefaultTableModel mostrarTrabajosAceptados(String idSolicitante) {
+        // Obtener los IDs de los trabajos aceptados por el solicitante
+        Set<String> idsTrabajosAceptados = jedis.smembers("index:trabajo:aceptados:" + idSolicitante);
+
+        // Crear un modelo de tabla con las columnas necesarias
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("ID");
+        model.addColumn("Puesto");
+        model.addColumn("Salario");
+        model.addColumn("Tipo de Empleo");
+        model.addColumn("Función");
+        model.addColumn("Nivel de Estudio Mínimo");
+        model.addColumn("Experiencia");
+
+        // Para cada trabajo aceptado, obtener los datos y agregarlos al modelo
+        for (String idTrabajo : idsTrabajosAceptados) {
+            Map<String, String> datosTrabajo = jedis.hgetAll("trabajo:" + idTrabajo);
+            model.addRow(new Object[]{
+                idTrabajo,
+                datosTrabajo.get("puesto"),
+                datosTrabajo.get("salario"),
+                datosTrabajo.get("tipoEmpleo"),
+                datosTrabajo.get("funcion"),
+                datosTrabajo.get("nivelEstudioMinimo"),
+                datosTrabajo.get("experiencia")
+            });
+        }
+
+        return model;
+    }
+
+    public DefaultTableModel mostrarEmpleadosAceptados(String idTrabajo) {
+        // Obtener los IDs de los empleados aceptados para el trabajo
+        Set<String> idsEmpleadosAceptados = jedis.smembers("trabajo:trabajadores:" + idTrabajo);
+
+        // Crear un modelo de tabla con las columnas necesarias
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("ID");
+        model.addColumn("Nombre");
+        model.addColumn("Correo");
+        model.addColumn("Teléfono");
+
+        // Para cada empleado aceptado, obtener los datos y agregarlos al modelo
+        for (String idEmpleado : idsEmpleadosAceptados) {
+            Map<String, String> datosEmpleado = jedis.hgetAll("persona:" + idEmpleado);
+            model.addRow(new Object[]{
+                idEmpleado,
+                datosEmpleado.get("nombre"),
+                datosEmpleado.get("correo"),
+                datosEmpleado.get("telefono")
+            });
+        }
+
+        return model;
+    }
+
+    public void AceptarSolicitud(String idSolicitante, String idTrabajo) {
+        // Eliminar la solicitud del solicitante para este trabajo
+        jedis.srem("index:solicitud:trabajo:" + idSolicitante, idTrabajo);
+
+        // Eliminar al solicitante de la lista de solicitantes para este trabajo
+        jedis.srem("index:trabajo:solicitantes:" + idTrabajo, idSolicitante);
+
+        // Agregar al solicitante como trabajador en el trabajo
+        jedis.sadd("index:trabajo:trabajadores:" + idTrabajo, idSolicitante);
+
+        // Agregar el trabajo a la lista de trabajos aceptados para el solicitante
+        jedis.sadd("index:trabajo:aceptados:" + idSolicitante, idTrabajo);
     }
 
     public void close() {
