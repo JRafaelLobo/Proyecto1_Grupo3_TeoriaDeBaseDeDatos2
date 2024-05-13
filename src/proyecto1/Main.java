@@ -2207,7 +2207,9 @@ public class Main extends javax.swing.JFrame {
         Jf_formularioEmpresa.getContentPane().setLayout(Jf_formularioEmpresaLayout);
         Jf_formularioEmpresaLayout.setHorizontalGroup(
             Jf_formularioEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(Jf_formularioEmpresaLayout.createSequentialGroup()
+                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Jf_formularioEmpresaLayout.setVerticalGroup(
             Jf_formularioEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4054,11 +4056,27 @@ public class Main extends javax.swing.JFrame {
         numTel_Empleado = tf_numTelcrearEmpleado.getText();
         Nacionalidad_Empleado = tf_nacionalidadcrearEmpleado.getText();
         estadoCivil_Empleado = (String) cb_EstadoCivilcrearEmpleado.getSelectedItem();
+        boolean valido = true;
+        try {
+            Integer.parseInt(numId_Empleado);
+            Integer.parseInt(numTel_Empleado);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese números enteros válidos en los campos correspondientes.", "Error", JOptionPane.ERROR_MESSAGE);
+            valido = false;
+        }
+        if (nom_Empleado.isEmpty() || numId_Empleado.isEmpty() || cElectronico_Empleado.isEmpty() || Residencia_Empleado.isEmpty()
+                || FechaNacimiento_Empleado.isEmpty() || numTel_Empleado.isEmpty() || Nacionalidad_Empleado.isEmpty() || estadoCivil_Empleado.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+            valido = false;
+        }
+        if (valido) {
+            Jf_formularioEmpleado2.setVisible(true);
+            Jf_formularioEmpleado2.pack();
+            Jf_formularioEmpleado2.setLocationRelativeTo(Jf_formularioEmpleado);
+            Jf_formularioEmpleado.setVisible(false);
+        }
 
-        Jf_formularioEmpleado2.setVisible(true);
-        Jf_formularioEmpleado2.pack();
-        Jf_formularioEmpleado2.setLocationRelativeTo(Jf_formularioEmpleado);
-        Jf_formularioEmpleado.setVisible(false);
+
     }//GEN-LAST:event_jPanel18MouseClicked
 
     private void jPanel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel21MouseClicked
@@ -4071,10 +4089,27 @@ public class Main extends javax.swing.JFrame {
         Certificaciones_Empleado = tf_certificacionesCrearEmpleado.getText();
         nivelEstudio_Empleado = (String) cb_nivelEstudioCrearEmpleado.getSelectedItem();
 
-        Jf_formularioEmpleado3.setVisible(true);
-        Jf_formularioEmpleado3.pack();
-        Jf_formularioEmpleado3.setLocationRelativeTo(Jf_formularioEmpleado2);
-        Jf_formularioEmpleado2.setVisible(false);
+        boolean valido = true;
+        try {
+            Integer.parseInt(numEmergencia_Empleado);
+            Integer.parseInt(AnioGraduacion_Empleado);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese números enteros válidos en los campos correspondientes.", "Error", JOptionPane.ERROR_MESSAGE);
+            valido = false;
+        }
+        if (numEmergencia_Empleado.isEmpty() || cEmergencia_Empleado.isEmpty() || idioma_Empleado.isEmpty() || AnioGraduacion_Empleado.isEmpty()
+                || Titulo_Empleado.isEmpty() || EstudiosAfines_Empleado.isEmpty() || Certificaciones_Empleado.isEmpty() || nivelEstudio_Empleado.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+            valido = false;
+        }
+        if (valido) {
+            Jf_formularioEmpleado3.setVisible(true);
+            Jf_formularioEmpleado3.pack();
+            Jf_formularioEmpleado3.setLocationRelativeTo(Jf_formularioEmpleado2);
+            Jf_formularioEmpleado2.setVisible(false);
+        }
+
+
     }//GEN-LAST:event_jPanel21MouseClicked
 
     private void jPanel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel24MouseClicked
@@ -4087,32 +4122,50 @@ public class Main extends javax.swing.JFrame {
         String Usuario = tf_nombreUsuario.getText();
         String clave = tf_claveUsuario.getText();
 
-        j.CrearPersona(nom_Empleado, numId_Empleado, cElectronico_Empleado, Residencia_Empleado, FechaNacimiento_Empleado, numTel_Empleado, Nacionalidad_Empleado, estadoCivil_Empleado, numEmergencia_Empleado, cEmergencia_Empleado, idioma_Empleado, AnioGraduacion_Empleado, Titulo_Empleado, EstudiosAfines_Empleado, Certificaciones_Empleado, nivelEstudio_Empleado, AniosExperencia_Empleado, numReferencia_Empleado, cReferencia_Empleado, tipoEmpleo_Empleado, SalarioEsperado_Empleado, nombreReferencia_Empleado, Usuario, clave);
-        JOptionPane.showMessageDialog(Jf_formularioEmpleado3, "Se ha creado Persona");
+        boolean valido = true;
+        try {
+            Integer.parseInt(AniosExperencia_Empleado);
+            Integer.parseInt(numReferencia_Empleado);
+            Integer.parseInt(SalarioEsperado_Empleado);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese números enteros válidos en los campos correspondientes.", "Error", JOptionPane.ERROR_MESSAGE);
+            valido = false;
+        }
+        if (AniosExperencia_Empleado.isEmpty() || numReferencia_Empleado.isEmpty() || cReferencia_Empleado.isEmpty() || tipoEmpleo_Empleado.isEmpty()
+                || nombreReferencia_Empleado.isEmpty() || SalarioEsperado_Empleado.isEmpty() || Usuario.isEmpty() || clave.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+            valido = false;
+        }
+        if (valido) {
+            j.CrearPersona(nom_Empleado, numId_Empleado, cElectronico_Empleado, Residencia_Empleado, FechaNacimiento_Empleado, numTel_Empleado, Nacionalidad_Empleado, estadoCivil_Empleado, numEmergencia_Empleado, cEmergencia_Empleado, idioma_Empleado, AnioGraduacion_Empleado, Titulo_Empleado, EstudiosAfines_Empleado, Certificaciones_Empleado, nivelEstudio_Empleado, AniosExperencia_Empleado, numReferencia_Empleado, cReferencia_Empleado, tipoEmpleo_Empleado, SalarioEsperado_Empleado, nombreReferencia_Empleado, Usuario, clave);
+            JOptionPane.showMessageDialog(Jf_formularioEmpleado3, "Se ha creado Persona");
 //cerrar
-        tf_aExperienciaCrearEmpleado.setText("");
-        tf_aGraduacionCrearEmpleado.setText("");
-        tf_cReferenciaCrearEmpleado.setText("");
-        tf_certificacionesCrearEmpleado.setText("");
-        tf_corEmergenciaCrearEmpleado.setText("");
-        tf_correoElectronicocrearEmpleado.setText("");
-        tf_estudiosAfinesCrearEmpleado.setText("");
-        tf_fechaNcrearEmpleado.setText("");
-        tf_idiomasCrearEmpleado.setText("");
-        tf_nacionalidadcrearEmpleado.setText("");
-        tf_nomReferenciaCrearEmpleado.setText("");
-        tf_nomcrearEmpleado.setText("");
-        tf_numTelcrearEmpleado.setText("");
-        tf_nombreUsuario.setText("");
-        tf_claveUsuario.setText("");
-        tf_numEmergenciaCrearEmpleado.setText("");
-        tf_numIdcrearEmpleado.setText("");
-        tf_numReferenciasCrearEmpleado.setText("");
-        tf_rescrearEmpleado.setText("");
-        tf_salarioCrearEmpleado.setText("");
-        tf_tipoEmpleoCrearEmpleado.setText("");
-        tf_tituloCrearEmpleado.setText("");
-        Jf_formularioEmpleado3.setVisible(false);
+            tf_aExperienciaCrearEmpleado.setText("");
+            tf_aGraduacionCrearEmpleado.setText("");
+            tf_cReferenciaCrearEmpleado.setText("");
+            tf_certificacionesCrearEmpleado.setText("");
+            tf_corEmergenciaCrearEmpleado.setText("");
+            tf_correoElectronicocrearEmpleado.setText("");
+            tf_estudiosAfinesCrearEmpleado.setText("");
+            tf_fechaNcrearEmpleado.setText("");
+            tf_idiomasCrearEmpleado.setText("");
+            tf_nacionalidadcrearEmpleado.setText("");
+            tf_nomReferenciaCrearEmpleado.setText("");
+            tf_nomcrearEmpleado.setText("");
+            tf_numTelcrearEmpleado.setText("");
+            tf_nombreUsuario.setText("");
+            tf_claveUsuario.setText("");
+            tf_numEmergenciaCrearEmpleado.setText("");
+            tf_numIdcrearEmpleado.setText("");
+            tf_numReferenciasCrearEmpleado.setText("");
+            tf_rescrearEmpleado.setText("");
+            tf_salarioCrearEmpleado.setText("");
+            tf_tipoEmpleoCrearEmpleado.setText("");
+            tf_tituloCrearEmpleado.setText("");
+            Jf_formularioEmpleado3.setVisible(false);
+        }
+
+
     }//GEN-LAST:event_jPanel24MouseClicked
 
     private void JB_modificarAgenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_modificarAgenteMouseClicked
@@ -4188,23 +4241,38 @@ public class Main extends javax.swing.JFrame {
         String nacionOrignencrearEmpresa = tf_nacioncrearEmpresa.getText();
         String usuario = tf_UsuarioEmpresa.getText();
         String clave = tf_ClaveEmpresa.getText();
+        boolean valido = true;
         try {
-            j.CrearEmpresa(nombrecrearEmpresa, cifcrearEmpresa, directorcrearEmpresa, direccioncrearEmpresa, rubrocrearEmpresa, sectorcrearEmpresa, fechafundacioncrearEmpresa, nacionOrignencrearEmpresa, usuario, clave);
-            JOptionPane.showMessageDialog(Jf_formularioEmpresa, "Se ha creado la Empresa");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(Jf_formularioEmpresa, "Ha Fallado la creacion de la empresa");
+            Integer.parseInt(cifcrearEmpresa);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese números enteros válidos en los campos correspondientes.", "Error", JOptionPane.ERROR_MESSAGE);
+            valido = false;
         }
-        Jf_formularioEmpresa.setVisible(false);
-        tf_nombrecrearEmpresa.setText("");
-        tf_CIFcrearEmpresa.setText("");
-        tf_directorcrearEmpresa.setText("");
-        tf_direccioncrearEmpresa.setText("");
-        tf_rubrocrearEmpresa.setText("");
-        tf_sectorcrearEmpresa.setText("");
-        tf_fechafundacioncrearEmpresa.setText("");
-        tf_nacioncrearEmpresa.setText("");
-        tf_UsuarioEmpresa.setText("");
-        tf_ClaveEmpresa.setText("");
+        if (nombrecrearEmpresa.isEmpty() || cifcrearEmpresa.isEmpty() || directorcrearEmpresa.isEmpty() || direccioncrearEmpresa.isEmpty()
+                || rubrocrearEmpresa.isEmpty() || sectorcrearEmpresa.isEmpty() || fechafundacioncrearEmpresa.isEmpty() || nacionOrignencrearEmpresa.isEmpty()
+                ||usuario.isEmpty()|| clave.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+            valido = false;
+        }
+        if (valido) {
+            try {
+                j.CrearEmpresa(nombrecrearEmpresa, cifcrearEmpresa, directorcrearEmpresa, direccioncrearEmpresa, rubrocrearEmpresa, sectorcrearEmpresa, fechafundacioncrearEmpresa, nacionOrignencrearEmpresa, usuario, clave);
+                JOptionPane.showMessageDialog(Jf_formularioEmpresa, "Se ha creado la Empresa");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(Jf_formularioEmpresa, "Ha Fallado la creacion de la empresa");
+            }
+            Jf_formularioEmpresa.setVisible(false);
+            tf_nombrecrearEmpresa.setText("");
+            tf_CIFcrearEmpresa.setText("");
+            tf_directorcrearEmpresa.setText("");
+            tf_direccioncrearEmpresa.setText("");
+            tf_rubrocrearEmpresa.setText("");
+            tf_sectorcrearEmpresa.setText("");
+            tf_fechafundacioncrearEmpresa.setText("");
+            tf_nacioncrearEmpresa.setText("");
+            tf_UsuarioEmpresa.setText("");
+            tf_ClaveEmpresa.setText("");
+        }
     }//GEN-LAST:event_jb_crearEmpresaMouseClicked
 
     private void JB_crearEmpresa4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_crearEmpresa4MouseClicked
@@ -4296,6 +4364,20 @@ public class Main extends javax.swing.JFrame {
         String NivelEstudioMinimo = tf_NivelDeEstudioMinimo.getText();
         String experiencia = tf_ExperienciaTrabajo.getText();
         String cupos = tf_Cupos.getText();
+        boolean valido = true;
+        try {
+            Integer.parseInt(Salario);
+            Integer.parseInt(cupos);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese números enteros válidos en los campos correspondientes.", "Error", JOptionPane.ERROR_MESSAGE);
+            valido = false;
+        }
+        if (Puesto.isEmpty() || Salario.isEmpty() || TipoEmpleo.isEmpty() || funcion.isEmpty()
+                || TituloRequisito.isEmpty() || NivelEstudioMinimo.isEmpty() || experiencia.isEmpty() || cupos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+            valido = false;
+        }
+        if (valido) {
         j.crearTrabajo(Puesto, Salario, TipoEmpleo, funcion, TituloRequisito, NivelEstudioMinimo, experiencia, cupos, idActivo);
         JOptionPane.showMessageDialog(Jf_formulariosolicitud, "se ha creado la Solicitud exitosamente");
         Jf_formulariosolicitud.setVisible(false);
@@ -4308,6 +4390,7 @@ public class Main extends javax.swing.JFrame {
         tf_NivelDeEstudioMinimo.setText("");
         tf_ExperienciaTrabajo.setText("");
         tf_Cupos.setText("");
+        }
     }//GEN-LAST:event_jp_crearSolicitudMouseClicked
 
     private void jl_crearSolicitudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_crearSolicitudMouseClicked
