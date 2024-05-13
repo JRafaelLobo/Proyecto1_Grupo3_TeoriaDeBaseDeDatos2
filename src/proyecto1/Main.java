@@ -4250,7 +4250,7 @@ public class Main extends javax.swing.JFrame {
         }
         if (nombrecrearEmpresa.isEmpty() || cifcrearEmpresa.isEmpty() || directorcrearEmpresa.isEmpty() || direccioncrearEmpresa.isEmpty()
                 || rubrocrearEmpresa.isEmpty() || sectorcrearEmpresa.isEmpty() || fechafundacioncrearEmpresa.isEmpty() || nacionOrignencrearEmpresa.isEmpty()
-                ||usuario.isEmpty()|| clave.isEmpty()) {
+                || usuario.isEmpty() || clave.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
             valido = false;
         }
@@ -4378,18 +4378,18 @@ public class Main extends javax.swing.JFrame {
             valido = false;
         }
         if (valido) {
-        j.crearTrabajo(Puesto, Salario, TipoEmpleo, funcion, TituloRequisito, NivelEstudioMinimo, experiencia, cupos, idActivo);
-        JOptionPane.showMessageDialog(Jf_formulariosolicitud, "se ha creado la Solicitud exitosamente");
-        Jf_formulariosolicitud.setVisible(false);
-        tf_Puesto.setText("");
+            j.crearTrabajo(Puesto, Salario, TipoEmpleo, funcion, TituloRequisito, NivelEstudioMinimo, experiencia, cupos, idActivo);
+            JOptionPane.showMessageDialog(Jf_formulariosolicitud, "se ha creado la Solicitud exitosamente");
+            Jf_formulariosolicitud.setVisible(false);
+            tf_Puesto.setText("");
 
-        tf_SalarioTrabajo.setText("");
-        tf_TipoEmpleadoTrabajo.setText("");
-        tf_FuncionTrabajo.setText("");
-        tf_TituloRequisitoTrabajo.setText("");
-        tf_NivelDeEstudioMinimo.setText("");
-        tf_ExperienciaTrabajo.setText("");
-        tf_Cupos.setText("");
+            tf_SalarioTrabajo.setText("");
+            tf_TipoEmpleadoTrabajo.setText("");
+            tf_FuncionTrabajo.setText("");
+            tf_TituloRequisitoTrabajo.setText("");
+            tf_NivelDeEstudioMinimo.setText("");
+            tf_ExperienciaTrabajo.setText("");
+            tf_Cupos.setText("");
         }
     }//GEN-LAST:event_jp_crearSolicitudMouseClicked
 
@@ -4524,15 +4524,47 @@ public class Main extends javax.swing.JFrame {
 //        jl_solicitudPersonaSalario.setText(salario);
 //        jp_DetallesSolicitud.setVisible(true);
 //        
+
+        String id = jlist_SolicitudesPersona1.getSelectedValue();
+        id = j.extraerId(id);
+        String nombre = j.obtenerAtributoEmpleado(id, "nombre");
+        String identidad = j.obtenerAtributoEmpleado(id, "identidad");
+        String correo = j.obtenerAtributoEmpleado(id, "correo");
+        String experiencia = j.obtenerAtributoEmpleado(id, "experiencia");
+        String titulo = j.obtenerAtributoEmpleado(id, "titulo");
+        String numero_Telefonico = j.obtenerAtributoEmpleado(id, "telefono");
+        String nacionalidad = j.obtenerAtributoEmpleado(id, "nacionalidad");
+        String salario_Preferiro = j.obtenerAtributoEmpleado(id, "salarioEsperado");
+
+        jLabel126.setText(nombre);
+        jLabel134.setText(identidad);
+        jLabel135.setText(correo);
+        jLabel138.setText(experiencia);
+        jLabel136.setText(titulo);
+        jLabel137.setText(numero_Telefonico);
+        jLabel140.setText(nacionalidad);
+        jLabel139.setText(salario_Preferiro);
+
         jp_datosaplicante.setVisible(true);
 
     }//GEN-LAST:event_jPanel60MouseClicked
 
     private void jPanel62MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel62MouseClicked
         // TODO add your handling code here:
+        String id = jlist_SolicitudesPersona1.getSelectedValue();
+        id = j.extraerId(id);
+        j.AceptarSolicitud(id, trabajoSelecionado);
+
+        JOptionPane.showMessageDialog(jf_AceptarSolicitudEmpresa, "Se ha aceptado la solicitud");
+        DefaultListModel model = j.mostrarAplicantesTrabajoJList(trabajoSelecionado);
+        jlist_SolicitudesPersona1.setModel(model);
     }//GEN-LAST:event_jPanel62MouseClicked
 
     private void jPanel55MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel55MouseClicked
+
+        DefaultListModel<String> model = j.listarTrabajosJList(idActivo);
+        jlist_Solicitudes1.setModel(model);
+
         Jf_seleccionarSolicitud.setVisible(true);
         Jf_seleccionarSolicitud.pack();
         Jf_seleccionarSolicitud.setLocationRelativeTo(jf_VistaEmpresa);
@@ -4553,6 +4585,12 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel7MouseEntered
 
     private void JB_SeleccionarSolicitudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_SeleccionarSolicitudMouseClicked
+        String id = jlist_Solicitudes1.getSelectedValue();
+        id = j.extraerId(id);
+        trabajoSelecionado = id;
+        DefaultListModel model = j.mostrarAplicantesTrabajoJList(id);
+        jlist_SolicitudesPersona1.setModel(model);
+
         jp_datosaplicante.setVisible(false);
         Jf_seleccionarSolicitud.setVisible(false);
         jf_AceptarSolicitudEmpresa.setVisible(true);
@@ -4960,7 +4998,7 @@ JedisConector j;
 
     String idActivo = "-1";
     String idUsuario = "-1";
-//--------------------------
+    String trabajoSelecionado = "-1"; //--------------------------
     //Esta Clase se utiliza para Poner Imagenes dentro de paneles
 
     class FondoPanel extends JPanel {

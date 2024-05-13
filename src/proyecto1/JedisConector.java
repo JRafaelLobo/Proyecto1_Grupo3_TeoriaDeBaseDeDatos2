@@ -187,7 +187,7 @@ public class JedisConector {
             jedis.srem("index:trabajo:solicitantes:" + idTrabajo, idSolicitud);
             jedis.del("solicitud:" + idSolicitud);
         }
-        
+
         // Finalmente, eliminar el trabajo
         jedis.del("trabajo:" + idTrabajo);
         jedis.del("index:trabajo:solicitantes:" + idTrabajo);
@@ -308,6 +308,11 @@ public class JedisConector {
 
     public String obtenerAtributoDeTrabajo(String id, String atributo) {
         String key = "trabajo:" + id;
+        return jedis.hget(key, atributo);
+    }
+
+    public String obtenerAtributoEmpleado(String id, String atributo) {
+        String key = "persona:" + id;
         return jedis.hget(key, atributo);
     }
 
@@ -483,6 +488,18 @@ public class JedisConector {
                 datosPersona.get("salarioEsperado"),
                 datosPersona.get("nombreReferencia")
             });
+        }
+
+        return model;
+    }
+
+    public DefaultListModel<String> mostrarAplicantesTrabajoJList(String id) {
+        Set<String> idEmpleados = jedis.smembers("index:trabajo:solicitantes:" + id);
+        DefaultListModel<String> model = new DefaultListModel<>();
+
+        for (String idEmpleado : idEmpleados) {
+            String nombre = jedis.hget("persona:" + idEmpleado, "nombre");
+            model.addElement(nombre + " (ID: " + idEmpleado + ")");
         }
 
         return model;
