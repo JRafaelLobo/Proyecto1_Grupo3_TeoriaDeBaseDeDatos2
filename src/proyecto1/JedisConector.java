@@ -352,6 +352,25 @@ public class JedisConector {
         return model;
     }
 
+    public DefaultListModel<String> listarTrabajosDisponibleJList() {
+        Set<String> keys = jedis.keys("trabajo:*");
+
+        DefaultListModel<String> model = new DefaultListModel<>();
+
+        for (String idTrabajo : keys) {
+            String key = idTrabajo;
+            Map<String, String> datosTrabajo = jedis.hgetAll(key);
+            int int_Cupos = Integer.valueOf(datosTrabajo.get("cupos"));
+            if (int_Cupos > 0) {
+                String nombreTrabajo = datosTrabajo.get("puesto");
+                String cupos = datosTrabajo.get("cupos");
+                String idNUmerito = key.substring(8);
+                model.addElement("Puesto: " + nombreTrabajo + "    Cupos: " + cupos + " (ID: " + idNUmerito + ")");
+            }
+        }
+        return model;
+    }
+
     public Set<String> listarEmpresas() {
         Set<String> keys = jedis.keys("empresa:*");
         Set<String> nombresEmpresas = new HashSet<>();
@@ -803,6 +822,8 @@ public class JedisConector {
 
         // Agregar el trabajo a la lista de trabajos aceptados para el solicitante
         jedis.sadd("index:trabajo:aceptados:" + idSolicitante, idTrabajo);
+
+        jedis.hset("trabajo:" + idTrabajo, "cupos", String.valueOf(Integer.parseInt(jedis.hget("trabajo:" + idTrabajo, "cupos")) - 1));
     }
 
     public void close() {

@@ -1071,9 +1071,6 @@ public class Main extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel7MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel7MouseEntered(evt);
-            }
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe Script", 2, 18)); // NOI18N
@@ -3790,8 +3787,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addComponent(jPanel60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(87, 87, 87))
@@ -3908,7 +3904,7 @@ public class Main extends javax.swing.JFrame {
         jPanel63Layout.setVerticalGroup(
             jPanel63Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel63Layout.createSequentialGroup()
-                .addContainerGap(366, Short.MAX_VALUE)
+                .addContainerGap(370, Short.MAX_VALUE)
                 .addComponent(JB_SeleccionarSolicitud)
                 .addGap(33, 33, 33))
             .addGroup(jPanel63Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4026,7 +4022,7 @@ public class Main extends javax.swing.JFrame {
             jf_VistaPersona.setLocationRelativeTo(JF_login);
             JF_login.setVisible(false);
 
-            DefaultListModel<String> model = j.listarTrabajosJList();
+            DefaultListModel<String> model = j.listarTrabajosDisponibleJList();
             jlist_SolicitudesPersona.setModel(model);
 
             return;
@@ -4579,10 +4575,6 @@ public class Main extends javax.swing.JFrame {
     private void jlist_Solicitudes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlist_Solicitudes1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jlist_Solicitudes1MouseClicked
-
-    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel7MouseEntered
 
     private void JB_SeleccionarSolicitudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_SeleccionarSolicitudMouseClicked
         String id = jlist_Solicitudes1.getSelectedValue();
